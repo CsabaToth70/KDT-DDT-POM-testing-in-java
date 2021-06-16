@@ -44,7 +44,8 @@ public class ChromeBaseTest {
     @Test
     @Order(1)
     void navigationTest_ClickOnSimpleFormDemo(){
-        driver.findElement(By.cssSelector("ul:nth-child(3) > .tree-branch:nth-child(1) > a")).click();
+//        driver.findElement(By.cssSelector("ul:nth-child(3) > .tree-branch:nth-child(1) > a")).click();
+        driver.findElement(By.linkText("Input Forms")).click();
         driver.findElement(By.linkText("Simple Form Demo")).click();
     }
 
