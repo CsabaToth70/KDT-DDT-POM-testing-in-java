@@ -5,23 +5,18 @@ import KDT.operation.UIOperation;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 public class ExecuteTests {
     WebDriver webdriver = new ChromeDriver();
     ReadObject object = new ReadObject();
     Properties allObjects = object.getObjectRepository();
     UIOperation operation = new UIOperation(webdriver);
-
-    JavascriptExecutor js = (JavascriptExecutor) webdriver;
-    Map<String, Object> vars = new HashMap<String, Object>();
 
     public ExecuteTests() throws IOException {
     }
@@ -37,7 +32,6 @@ public class ExecuteTests {
             System.out.println("Deviation during test process preparation. Starting Pop up window was not displayed, " +
                     "and the testing setup could not cancel it.");
         }
-
     }
 
     @AfterEach

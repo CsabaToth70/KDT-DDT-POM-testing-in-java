@@ -1,0 +1,103 @@
+package KDT.excelfilehandler;
+
+import java.io.FileInputStream;
+
+import KDT.operation.ReadObject;
+import KDT.operation.UIOperation;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.Properties;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ReadExcel {
+    ReadObject object = new ReadObject();
+    Properties allObjects = object.getObjectRepository();
+
+    String path = System.getProperty("user.dir");
+
+    public ReadExcel() throws IOException {
+    }
+
+    @Test
+    public void readExcelAndExecute() throws Exception {
+
+        //From excel file
+        String excelFilePath = path+"/externals/testCases.xlsx";
+        FileInputStream fileInputStream = new FileInputStream(excelFilePath);
+
+        XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
+
+        int testCasesCount = workbook.getNumberOfSheets()-1;
+
+        System.out.println("Number test cases: " + testCasesCount);
+
+        for (int testCase = 0; testCase < testCasesCount; testCase++) {
+            WebDriver webdriver = new ChromeDriver();
+            UIOperation operation = new UIOperation(webdriver);
+            setup(webdriver, operation);
+
+            XSSFSheet worksheet = workbook.getSheetAt(testCase);
+
+            System.out.println("Worksheet number "+ testCase + ":" + worksheet.getSheetName());
+
+            int row = worksheet.getLastRowNum();
+            int column = worksheet.getRow(0).getLastCellNum();
+
+            for(int i=1; i <= row; i++){
+
+                LinkedList<String> testExecution = new LinkedList<>();
+
+                System.out.println("Row value: " + i + "It has first cell value as: " + worksheet.getRow(i).getCell(0));
+
+                for(int j=0; j < column; j++){
+//                    System.out.println("Column index: " + j);
+                    Cell criteria = worksheet.getRow(i).getCell(j);
+
+                    String criteriaText;
+                    if(criteria == null){
+                        criteriaText = null;
+                    } else {
+                        criteriaText = criteria.getStringCellValue();
+                    }
+                    testExecution.add(criteriaText);
+
+                }
+
+                // or rather from here by used the testExecution list
+                System.out.println("List: " + testExecution);
+                String testSteps = testExecution.get(0);
+                String objectName = testExecution.get(1);
+                String locatorType = testExecution.get(2);
+                String value = testExecution.get(3);
+
+                operation.perform(allObjects, testSteps, objectName, locatorType, value);
+
+                System.out.println("Row" + i + " is read and action performed");
+            }
+            // AfterEach
+            webdriver.close();
+            System.out.println("************************** TEST CASE " + worksheet.getSheetName() + " was executed *****************************");
+        }
+    }
+    private void setup(WebDriver webdriver, UIOperation operation) throws Exception {
+        webdriver.manage().window().maximize();
+        operation.perform(allObjects, "goToUrl", null, null, "baseUrl");
+        try {
+            operation.perform(allObjects, "wait", "startingPopUp", "id", null);
+            operation.perform(allObjects, "cancel", "startingPopUp", "id", null);
+        } catch (Exception e) {
+            System.out.println("Deviation during test process preparation. Starting Pop up window was not displayed, " +
+                    "and the testing setup could not cancel it.");
+        }
+    }
+}
