@@ -1,0 +1,11 @@
+input,expected
+Test message, Test message
+" ", " "
+"", ""
+12, 12
+-3, -3
+0, 0
+#, #
+@, @
+&, &
+\n, \n

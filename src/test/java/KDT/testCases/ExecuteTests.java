@@ -10,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.IOException;
 import java.util.Properties;
-import java.util.logging.Logger;
 
 public class ExecuteTests {
     WebDriver webdriver = new ChromeDriver();
@@ -29,7 +28,7 @@ public class ExecuteTests {
             operation.perform(allObjects, "wait", "startingPopUp", "id", null);
             operation.perform(allObjects, "cancel", "startingPopUp", "id", null);
         } catch (Exception e) {
-            System.out.println("Deviation during test process preparation. Starting Pop up window was not displayed, " +
+            System.out.println(e + "\nDeviation during test process preparation. Starting Pop up window was not displayed, " +
                     "and the testing setup could not cancel it.");
         }
     }
@@ -171,6 +170,5 @@ public class ExecuteTests {
         operation.perform(allObjects, "click", "radiobutton", "css", null);
         operation.perform(allObjects, "assertText", "radioResult", "css", "Sex : Male\nAge group: 0 - 5");
     }
-
 
 }

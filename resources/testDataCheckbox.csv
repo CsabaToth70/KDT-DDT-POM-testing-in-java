@@ -1,0 +1,6 @@
+input,expected
+1, , , , , Check All
+, 1, 1, 1, , Check All
+, 1, 1, 1, 1, Uncheck All
+1, 1, 1, 1, , Check All
+1, 1, 1, 1, 1, Uncheck All

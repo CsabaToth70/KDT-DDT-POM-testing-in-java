@@ -57,6 +57,7 @@ public class ChromeBaseTest {
         driver.findElement(By.id("user-message")).click();
         driver.findElement(By.id("user-message")).sendKeys("Test message");
         driver.findElement(By.cssSelector(".btn:nth-child(2)")).click();
+        assertEquals("Test message", driver.findElement(By.xpath("//span[@id='display']")).getText());
     }
 
     @Test
@@ -151,41 +152,41 @@ public class ChromeBaseTest {
         driver.findElement(By.cssSelector(".tree-branch:nth-child(1) > .glyphicon-chevron-right")).click();
         driver.findElement(By.linkText("Select Dropdown List")).click();
 
-//        WebElement element = driver.findElement(By.id("select-demo"));
-//        Actions builder = new Actions(driver);
-//        builder.moveToElement(element).clickAndHold().perform();
-//
-//        element = driver.findElement(By.id("select-demo"));
-//        builder = new Actions(driver);
-//        builder.moveToElement(element).perform();
-//
-//        element = driver.findElement(By.id("select-demo"));
-//        builder = new Actions(driver);
-//        builder.moveToElement(element).release().perform();
+        WebElement element = driver.findElement(By.id("select-demo"));
+        Actions builder = new Actions(driver);
+        builder.moveToElement(element).clickAndHold().perform();
+
+        element = driver.findElement(By.id("select-demo"));
+        builder = new Actions(driver);
+        builder.moveToElement(element).perform();
+
+        element = driver.findElement(By.id("select-demo"));
+        builder = new Actions(driver);
+        builder.moveToElement(element).release().perform();
 
         driver.findElement(By.id("select-demo")).click();
 
-//        WebElement dropdown = driver.findElement(By.id("select-demo"));
-//        dropdown.findElement(By.xpath("//option[. = 'Tuesday']")).click();
-//
-//        driver.findElement(By.cssSelector("#select-demo > option:nth-child(4)")).click();
-//        assertEquals("Day selected :- Tuesday", driver.findElement(By.cssSelector(".selected-value")).getText());
-//        driver.findElement(By.id("select-demo")).click();
-//
-//        dropdown = driver.findElement(By.id("select-demo"));
-//        dropdown.findElement(By.cssSelector("*[value='Wednesday']")).click();
-//
-//        driver.findElement(By.cssSelector("#select-demo > option:nth-child(5)")).click();
-//        assertEquals("Day selected :- Wednesday", driver.findElement(By.cssSelector(".selected-value")).getText());
-//        driver.findElement(By.id("select-demo")).click();
-//
-//        driver.findElement(By.xpath("//option[text()=\'Wednesday\']")).click();
-//        assertEquals("Day selected :- Wednesday", driver.findElement(By.cssSelector(".selected-value")).getText());
-//        driver.findElement(By.id("select-demo")).click();
-//
-//        driver.findElement(By.xpath("//*[contains(text(),\'Wednes\')]")).click();
-//        assertEquals("Day selected :- Wednesday", driver.findElement(By.cssSelector(".selected-value")).getText());
-//        driver.findElement(By.id("select-demo")).click();
+        WebElement dropdown = driver.findElement(By.id("select-demo"));
+        dropdown.findElement(By.xpath("//option[. = 'Tuesday']")).click();
+
+        driver.findElement(By.cssSelector("#select-demo > option:nth-child(4)")).click();
+        assertEquals("Day selected :- Tuesday", driver.findElement(By.cssSelector(".selected-value")).getText());
+        driver.findElement(By.id("select-demo")).click();
+
+        dropdown = driver.findElement(By.id("select-demo"));
+        dropdown.findElement(By.cssSelector("*[value='Wednesday']")).click();
+
+        driver.findElement(By.cssSelector("#select-demo > option:nth-child(5)")).click();
+        assertEquals("Day selected :- Wednesday", driver.findElement(By.cssSelector(".selected-value")).getText());
+        driver.findElement(By.id("select-demo")).click();
+
+        driver.findElement(By.xpath("//option[text()=\'Wednesday\']")).click();
+        assertEquals("Day selected :- Wednesday", driver.findElement(By.cssSelector(".selected-value")).getText());
+        driver.findElement(By.id("select-demo")).click();
+
+        driver.findElement(By.xpath("//*[contains(text(),\'Wednes\')]")).click();
+        assertEquals("Day selected :- Wednesday", driver.findElement(By.cssSelector(".selected-value")).getText());
+        driver.findElement(By.id("select-demo")).click();
 
         driver.findElement(By.xpath("//*[text()=\'Wednesday\']")).click();
         assertEquals("Day selected :- Wednesday", driver.findElement(By.cssSelector(".selected-value")).getText());

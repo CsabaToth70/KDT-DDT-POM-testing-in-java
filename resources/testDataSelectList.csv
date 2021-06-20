@@ -1,0 +1,15 @@
+input,expected
+monday, Day selected :- Monday
+tuesday, Day selected :- Tuesday
+wednesday, Day selected :- Wednesday
+thursday, Day selected :- Thursday
+friday, Day selected :- Friday
+saturday, Day selected :- Saturday
+sunday, Day selected :- Sunday
+monday, Day selected :- Monday
+tuesday, Day selected :- Tuesday
+wednesday, Day selected :- Wednesday
+thursday, Day selected :- Thursday
+friday, Day selected :- Friday
+saturday, Day selected :- Saturday
+sunday, Day selected :- Sunday

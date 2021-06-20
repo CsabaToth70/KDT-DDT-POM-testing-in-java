@@ -1,0 +1,7 @@
+input,expected
+male, 0 - 5, Male/0 - 5
+male, 5 - 15, Male/5 - 15
+male, 15 - 50, Male/15 - 50
+female, 0 - 5, Female/0 - 5
+female, 5 - 15, Female/5 - 15
+female, 15 - 50, Female/15 - 50
