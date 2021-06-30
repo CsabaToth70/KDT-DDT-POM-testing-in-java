@@ -17,7 +17,7 @@ import java.util.Properties;
 public class ReadExcel {
     ReadObject object = new ReadObject();
     Properties allObjects = object.getObjectRepository();
-
+    WebDriver webdriver = new ChromeDriver();
     String path = System.getProperty("user.dir");
 
     public ReadExcel() throws IOException {
@@ -27,12 +27,12 @@ public class ReadExcel {
     public void readExcelAndExecute() throws Exception {
 
         //From excel file
-        String excelFilePath = path+"/externals/testCases.xlsx";
+        String excelFilePath = path + "/externals/testCases.xlsx";
         FileInputStream fileInputStream = new FileInputStream(excelFilePath);
 
         XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
 
-        int testCasesCount = workbook.getNumberOfSheets()-1;
+        int testCasesCount = workbook.getNumberOfSheets() - 1;
 
         System.out.println("Number test cases: " + testCasesCount);
 
@@ -43,23 +43,23 @@ public class ReadExcel {
 
             XSSFSheet worksheet = workbook.getSheetAt(testCase);
 
-            System.out.println("Worksheet number "+ testCase + ":" + worksheet.getSheetName());
+            System.out.println("Worksheet number " + testCase + ":" + worksheet.getSheetName());
 
             int row = worksheet.getLastRowNum();
             int column = worksheet.getRow(0).getLastCellNum();
 
-            for(int i=1; i <= row; i++){
+            for (int i = 1; i <= row; i++) {
 
                 LinkedList<String> testExecution = new LinkedList<>();
 
                 System.out.println("Row value: " + i + "It has first cell value as: " + worksheet.getRow(i).getCell(0));
 
-                for(int j=0; j < column; j++){
+                for (int j = 0; j < column; j++) {
 //                    System.out.println("Column index: " + j);
                     Cell criteria = worksheet.getRow(i).getCell(j);
 
                     String criteriaText;
-                    if(criteria == null){
+                    if (criteria == null) {
                         criteriaText = null;
                     } else {
                         criteriaText = criteria.getStringCellValue();
@@ -84,6 +84,7 @@ public class ReadExcel {
             System.out.println("************************** TEST CASE " + worksheet.getSheetName() + " was executed *****************************");
         }
     }
+
     private void setup(WebDriver webdriver, UIOperation operation) throws Exception {
         webdriver.manage().window().maximize();
         operation.perform(allObjects, "goToUrl", null, null, "baseUrl");

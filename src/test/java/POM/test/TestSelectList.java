@@ -1,6 +1,5 @@
 package POM.test;
 
-import POM.pageFactory.Checkbox;
 import POM.pageFactory.SelectList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -39,7 +38,7 @@ public class TestSelectList {
     }
 
     @Test
-    public void selectList_setMonday(){
+    public void selectList_setMonday() {
         String expected = "Day selected :- Monday";
         SelectList objInputPage = new SelectList(driver);
         objInputPage.clickInputForms();
@@ -51,7 +50,7 @@ public class TestSelectList {
     }
 
     @Test
-    public void selectList_setTuesday(){
+    public void selectList_setTuesday() {
         String expected = "Day selected :- Tuesday";
         SelectList objInputPage = new SelectList(driver);
         objInputPage.clickInputForms();
@@ -63,7 +62,7 @@ public class TestSelectList {
     }
 
     @Test
-    public void selectList_setWednesday(){
+    public void selectList_setWednesday() {
         String expected = "Day selected :- Wednesday";
         SelectList objInputPage = new SelectList(driver);
         objInputPage.clickInputForms();
@@ -75,7 +74,7 @@ public class TestSelectList {
     }
 
     @Test
-    public void selectList_setThursday(){
+    public void selectList_setThursday() {
         String expected = "Day selected :- Thursday";
         SelectList objInputPage = new SelectList(driver);
         objInputPage.clickInputForms();
@@ -87,7 +86,7 @@ public class TestSelectList {
     }
 
     @Test
-    public void selectList_setFriday(){
+    public void selectList_setFriday() {
         String expected = "Day selected :- Friday";
         SelectList objInputPage = new SelectList(driver);
         objInputPage.clickInputForms();
@@ -99,7 +98,7 @@ public class TestSelectList {
     }
 
     @Test
-    public void selectList_setSaturday(){
+    public void selectList_setSaturday() {
         String expected = "Day selected :- Saturday";
         SelectList objInputPage = new SelectList(driver);
         objInputPage.clickInputForms();
@@ -111,7 +110,7 @@ public class TestSelectList {
     }
 
     @Test
-    public void selectList_setSunday(){
+    public void selectList_setSunday() {
         String expected = "Day selected :- Sunday";
         SelectList objInputPage = new SelectList(driver);
         objInputPage.clickInputForms();

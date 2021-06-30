@@ -14,7 +14,7 @@ public class SelectList {
     @FindBy(linkText = "Select Dropdown List")
     WebElement dropdownList;
 
-    @FindBy(id="select-demo")
+    @FindBy(id = "select-demo")
     WebElement select;
 
     @FindBy(xpath = "//*[text()='Monday']")
@@ -38,7 +38,7 @@ public class SelectList {
     @FindBy(xpath = "//*[text()='Sunday']")
     WebElement sunday;
 
-    @FindBy(css=".selected-value")
+    @FindBy(css = ".selected-value")
     WebElement dayResult;
 
     public SelectList(WebDriver driver) {
@@ -54,39 +54,39 @@ public class SelectList {
         dropdownList.click();
     }
 
-    public void clickSelectArrow(){
+    public void clickSelectArrow() {
         select.click();
     }
 
-    public void clickOnMonday(){
+    public void clickOnMonday() {
         monday.click();
     }
 
-    public void clickOnTuesday(){
+    public void clickOnTuesday() {
         tuesday.click();
     }
 
-    public void clickOnWednesday(){
+    public void clickOnWednesday() {
         wednesday.click();
     }
 
-    public void clickOnThursday(){
+    public void clickOnThursday() {
         thursday.click();
     }
 
-    public void clickOnFriday(){
+    public void clickOnFriday() {
         friday.click();
     }
 
-    public void clickOnSaturday(){
+    public void clickOnSaturday() {
         saturday.click();
     }
 
-    public void clickOnSunday(){
+    public void clickOnSunday() {
         sunday.click();
     }
 
-    public String getDayResult(){
+    public String getDayResult() {
         return dayResult.getText();
     }
 
