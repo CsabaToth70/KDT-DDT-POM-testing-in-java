@@ -51,6 +51,17 @@ The KDT framework has been implemented in two different way:
 
 ## User information
 
+3(+1) different implementations available for the automated testing of the same web elements of the Selenium Easy webpage.
+
+Runnable test files of the package:
+1. Keyword Driven Tests:<br>
+   excel sourced operation: KDT/excelfilehandler/ReadExcel.java <- only runs until the first found failed test case<br>
+   from JUnit: KDT/testCases/ExecuteTests.java <br>
+2. Data-Driven Tests:<br>
+   DDT/testCases/ExecuteDdtTests.java<br>
+3. Page Object Model:<br>
+   POM/test/Test...java
+
 When you run these test suites, the browser has to open and close each test case, to ensure independent test results from each other.
 
 The test cases contain click and type input data into fields of the webpage automatically, and some wait methods for the concerned fields to be clickable.

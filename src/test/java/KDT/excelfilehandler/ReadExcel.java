@@ -2,6 +2,7 @@ package KDT.excelfilehandler;
 
 import KDT.operation.ReadObject;
 import KDT.operation.UIOperation;
+import junit.framework.AssertionFailedError;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -55,7 +56,6 @@ public class ReadExcel {
                 System.out.println("Row value: " + i + "It has first cell value as: " + worksheet.getRow(i).getCell(0));
 
                 for (int j = 0; j < column; j++) {
-//                    System.out.println("Column index: " + j);
                     Cell criteria = worksheet.getRow(i).getCell(j);
 
                     String criteriaText;
@@ -74,9 +74,7 @@ public class ReadExcel {
                 String objectName = testExecution.get(1);
                 String locatorType = testExecution.get(2);
                 String value = testExecution.get(3);
-
                 operation.perform(allObjects, testSteps, objectName, locatorType, value);
-
                 System.out.println("Row" + i + " is read and action performed");
             }
             // AfterEach
@@ -88,12 +86,7 @@ public class ReadExcel {
     private void setup(WebDriver webdriver, UIOperation operation) throws Exception {
         webdriver.manage().window().maximize();
         operation.perform(allObjects, "goToUrl", null, null, "baseUrl");
-        try {
             operation.perform(allObjects, "wait", "startingPopUp", "id", null);
             operation.perform(allObjects, "cancel", "startingPopUp", "id", null);
-        } catch (Exception e) {
-            System.out.println("Deviation during test process preparation. Starting Pop up window was not displayed, " +
-                    "and the testing setup could not cancel it.");
-        }
     }
 }
